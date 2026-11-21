@@ -1,118 +1,59 @@
-#include <iostream>
+# Tic-Tac-Toe (C++)
 
-using namespace std;
-char current_marker;
-int current_player;
+A simple two-player Tic-Tac-Toe game built using C++.
 
-char board[3][3] = { {'1','2','3'},{'4','5','6'},{'7','8','9'} };
+This was one of my first programming projects, created as a way to practise programming fundamentals and problem-solving.
 
-void drawboard()
-{
-	
-	cout << "\t\t" << board[0][0] << " | " << board[0][1] << " | " << board[0][2] << " " << endl;
-	cout << "\t       _ _ _ _ _ _  \n";
-	cout << "\t\t" << board[1][0] << " | " << board[1][1] << " | " << board[1][2] << " " << endl;
-	cout << "\t       _ _ _ _ _ _  \n";
-	cout << "\t\t" << board[2][0] << " | " << board[2][1] << " | " << board[2][2] << " " << endl;
-}
+## Features
 
-void placemarker(int slot)
-{
-	int col;
-	int row;
-	row = slot / 3;
-	if (slot % 3 ==0)
-	{
-		row = row - 1;
-		col = 2;
-	}
-	else
-	{
-		col = (slot % 3) - 1;
-	}
-	board[row][col] = current_marker;
+- Two-player gameplay
+- Choose between X and O
+- 3×3 game board
+- Win detection for rows, columns, and diagonals
+- Draw detection
 
-}
+## Requirements
 
-char  winner()
-{
-	for (int i = 0; i < 3; i++)
-	{
-		//row 
-		if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
-		{
-			return current_player;
-		}
-		//colume
-		else if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
-		{
-			return current_player;
-		}
-	}
-		if (board[0][0] == board[1][1] && board[1][1] == board[2][2])
-		{
-			return current_player;
-		}
-		if (board[0][2] == board[1][1] && board[1][1] == board[2][0])
-		{
-			return current_player;
-		}
-		else
-		{
-			return 0;
-		}
-}
+- A C++ compiler (G++)
+- Linux, macOS, or Windows with a suitable C++ environment
 
-void swap()
-{
-	if (current_marker == 'x')
-	{
-		current_marker = 'o';
-	}
-	else
-	{
-		current_marker = 'x';
-	}
+## Compilation
 
-	if (current_player == '1')
-	{
-		current_player = '2';
-	}
-	else
-	{
-		current_player = '1';
-	}
+Clone the repository:
 
-}
+```bash
+git clone https://github.com/khatchig2o/tik-tak-toeGame-cpp.git
+cd tik-tak-toeGame-cpp
+```
 
-void game()
-{
-	char marker_p1;
-	int slot;
-	int player_wone;
-	cout << " Player one choos your marker :";
-	cin >> marker_p1;
+Compile the source code:
 
-	current_player = 1;
-	current_marker = marker_p1;
+```bash
+g++ -Wall -Wextra -Werror main.cpp -o tictactoe
+```
 
-	drawboard();
+Run the game:
 
-	for (int i = 0; i < 9; i++)
-	{
+```bash
+./tictactoe
+```
 
-		cout << " Its player " << current_player << "'s turn .Enter your slot :";
-		cin >> slot;
+## How to Play
 
-		placemarker(slot);
-		player_wone = winner();
-		swap();
+1. Player 1 chooses their marker (X or O).
+2. Players take turns entering a number from 1 to 9.
+3. Each number represents a position on the board.
+4. The first player to get three markers in a row, column, or diagonal wins.
 
-		drawboard();
-	}
-}
+## Project Structure
 
-int main()
-{
-	game();
-}
+```text
+tik-tak-toeGame-cpp/
+├── main.cpp
+├── README.md
+└── .gitignore
+```
+
+## License
+
+This project is available for learning and educational purposes.
